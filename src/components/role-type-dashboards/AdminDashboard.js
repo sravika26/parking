@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Alert, Button } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 export default function AdminDashboard() {
     function handlerAddWorker() {
        alert("handleAddWorker");
@@ -10,13 +10,6 @@ export default function AdminDashboard() {
     }
 
     return (
-        // <div>
-        //     <Alert variant="danger">You are admin! </Alert>
-
-        //     <Button onClick={handlerAddWorker} >Add Worker</Button>
-        //     <Button onClick={handleAddParkingSlots} >Add Parking slots</Button>
-        // </div>
-
         <div>
             <div class="jumbotron">
             <div class="container">

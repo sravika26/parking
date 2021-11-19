@@ -1,27 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import firebase from '../../firebase'
+import React from 'react'
 
 export default function WorkerDashboard() {
-//   const [loading, setLoading] = useState(false);
-//   const [parkingSpots, setParkingSpots] = useState([]);
-//   // //REALTIME GET parking lot space
-//   const parkingSpotsCollection = firebase.firestore().collection('users')
-//   function getParkingSpots() {
-//       setLoading(true);
-//       parkingSpotsCollection.onSnapshot((querySnapshot) => {
-//         const items = [];
-//         querySnapshot.forEach((doc) => {
-//           items.push(doc.data());
-//         });
-//         setParkingSpots(items);
-//         setLoading(false);
-//       });
-//   }
-  
-//   useEffect(() => {
-//     getParkingSpots();
-//     // eslint-disable-next-line
-//   }, []);
+
 
     return (
         <div>
