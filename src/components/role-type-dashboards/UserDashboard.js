@@ -19,16 +19,16 @@ export default function UserDashboard() {
         setLoading(false);
       });
 
-    // If using local sprint boot server.
-    setLoading(true)
-    await fetch('http://localhost:8080/parking-spot/?date=2021-11-22')
-    .then(res => res.json())
-    .then((data) => {
-        console.log(data);
-        setParkingSpots(data)
-    })
-    .catch(console.log)
-    setLoading(false);
+    // // If using local sprint boot server.
+    // setLoading(true)
+    // await fetch('http://localhost:8080/parking-spot/?date=2021-11-22')
+    // .then(res => res.json())
+    // .then((data) => {
+    //     console.log(data);
+    //     setParkingSpots(data)
+    // })
+    // .catch(console.log)
+    // setLoading(false);
   }
 
   console.log("parking spots :" +parkingSpots)
