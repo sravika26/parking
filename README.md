@@ -17,12 +17,18 @@ https://www.youtube.com/watch?v=3ZEz-iposj8
 ## How to build this project
 
 -  Clone the project from git hub
+
+```
+git  clone git@github.com:Kishorenl/parking-lot.git
+cd parking-lot
+```
+
 -  Build project 
 ```
-npm install && npm build
+yarn install && yarn build
 ```
 - Start the server in local
 ```
-npm start
+yarn start
 ```
 

@@ -6,10 +6,11 @@ export default function UserDashboard() {
   const [loading, setLoading] = useState(false);
   const [parkingSpots, setParkingSpots] = useState([]);
   // //REALTIME GET parking lot space
-  const parkingSpotsCollection = firebase.firestore().collection('parking-spots')
-  function getParkingSpots() {
+  
+  async function getParkingSpots() {
+      const parkingSpotsCollection = firebase.firestore().collection('parking-spots')
       setLoading(true);
-      parkingSpotsCollection.onSnapshot((querySnapshot) => {
+      parkingSpotsCollection.get().then((querySnapshot) => {
         const items = [];
         querySnapshot.forEach((doc) => {
           items.push(doc.data());
@@ -17,7 +18,22 @@ export default function UserDashboard() {
         setParkingSpots(items);
         setLoading(false);
       });
+
+    // If using local sprint boot server.
+    setLoading(true)
+    await fetch('http://localhost:8080/parking-spot/?date=2021-11-22')
+    .then(res => res.json())
+    .then((data) => {
+        console.log(data);
+        setParkingSpots(data)
+    })
+    .catch(console.log)
+    setLoading(false);
   }
+
+  console.log("parking spots :" +parkingSpots)
+  //http://localhost:8080/availableSpots?from=8&to=9
+
   
   function handleReserveSlot() {
     alert("handleReserveSlot" );
@@ -31,12 +47,11 @@ export default function UserDashboard() {
     return (
         <>
             {loading ? <h1>Loading...</h1> : null}
-            
             {!loading && 
                 <div>
                     <div class="jumbotron">
                     <div class="container">
-                        <h1 class="display-3">ABC Parking</h1>
+                        <h1 class="display-3">ABC Parking test</h1>
                         <p>Thanks for visiting, the below parking slots are available</p>
                         <p><a class="btn btn-primary btn-lg" href="/test" role="button">Learn more »</a></p>
                     </div>
@@ -45,10 +60,9 @@ export default function UserDashboard() {
                     <div class="container">
                         <div class="row">
                             {parkingSpots.map((parkingSpot) => (
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <h2>Slot# {parkingSpot.id}</h2>
                                     <p>Car size:  {parkingSpot.size}</p>
-                                    {/* <p><a class="btn btn-secondary" href="/test" role="button">Reserve »</a></p> */}
                                     <Button onClick={handleReserveSlot} >Reserve »</Button>
                                 </div>
                             ))}

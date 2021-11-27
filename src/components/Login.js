@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import firebase from "firebase/app"
+import app from "../firebase"
 
 export default function Login() {
   const emailRef = useRef()
@@ -10,6 +12,31 @@ export default function Login() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+
+  async function handleLogin(event) {
+    event.preventDefault()
+
+    var provider = new firebase.auth.GoogleAuthProvider()
+    provider.addScope("https://www.googleapis.com/auth/userinfo.email") // see: https://developers.google.com/identity/protocols/oauth2/scopes
+
+    const result = await app.auth().signInWithPopup(provider)
+    //const result = await app.auth().signInWithRedirect(provider)
+
+    var user = result.user
+    var providerId = result.additionalUserInfo.providerId
+    var profile = result.additionalUserInfo.profile
+    var token = result.credential.accessToken
+    console.log("USER:", user) // user.uid, user.displayName, user.email, user.emailVerified, user.phoneNumber, user.photoURL, user.refreshToken
+    console.log("PROVIDER:", providerId)
+    console.log("USER PROFILE:", profile)
+    console.log("ACCESS TOKEN", token)
+    // TODO: store this user info in the database, perhaps firestore
+    // This is automatically stored in Auth Context
+
+    console.log("LOGIN SUCCESS")
+    //flash({message:"Login success. Welcome back!", variant: "success"})
+    history.push("/")
+}
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -49,12 +76,20 @@ export default function Login() {
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
+
+          <Form onSubmit={handleLogin}>
+                        <Button className="w-100" type="submit">
+                            Log In w/ Google
+                        </Button>
+          </Form>
+
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
     </div>
+
     </>
   )
 }

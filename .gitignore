@@ -6,7 +6,7 @@
 .pnp.js
 
 #remove .env files
-
+.env
 
 # testing
 /coverage

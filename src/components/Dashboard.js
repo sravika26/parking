@@ -75,7 +75,8 @@ export default function Dashboard() {
           </nav>
           { currentUserRole && currentUserRole.roleId === 1 && <AdminDashboard/> }
           { currentUserRole && currentUserRole.roleId === 2 && <WorkerDashboard/> }
-          { !currentUserRole && <UserDashboard/> }
+          { currentUserRole && currentUserRole.roleId === 3 && <UserDashboard/> }
+          { (!currentUserRole || !currentUserRole.roleId ) && <UserDashboard/> }
         </main>
       }
     </>
