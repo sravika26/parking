@@ -8,7 +8,7 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
-
+import AdminWorkersView from './role-type-dashboards/AdminWorkersView'
 function App() {
   return (
     <Container
@@ -19,6 +19,7 @@ function App() {
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute exact path="/workers" component={AdminWorkersView} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
