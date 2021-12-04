@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
@@ -8,6 +8,8 @@ export default function Signup() {
   const locationRef = useRef()
   const checkinRef = useRef()
   const checkoutRef = useRef()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
   async function handleSubmit(e) {
     e.preventDefault()
       setError("")
@@ -46,7 +48,7 @@ export default function Signup() {
               <Form.Label>Checkout</Form.Label>
               <Form.Control type="checkout" ref={checkoutRef} required />
             </Form.Group>
-            <Link to="/UserDashboard"> */}
+            <Link to="/UserDashboard"> 
             <Button disabled={loading} className="w-100" type="submit">
               Submit</Button></Link>
           </Form>
