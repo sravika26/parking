@@ -55,7 +55,7 @@ export default function Login() {
 
   return (
     <>
-    <div style={{backgroundImage: `url("https://schoolsweek.co.uk/wp-content/uploads/2018/09/Parking-space-feat.jpg")`,backgroundPosition: 'center',
+    <div style={{backgroundImage: `url("https://lh6.googleusercontent.com/FO3xlG9O9ZCu9dt67YAEpRGlE1X9YXloAkkLw-6CD3lk_JeTBVtmm8ygpjzVbzLoV3SzUa9yojMujRUJhXub=w1920-h866-rw")`,backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         width: '200vw',
@@ -75,7 +75,7 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100" type="submit" style={{color:"purple"}}>
               Log In
             </Button>
           </Form>
