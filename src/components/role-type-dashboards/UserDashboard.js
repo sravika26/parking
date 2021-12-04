@@ -107,6 +107,16 @@ export default function UserDashboard() {
                 style={{ height: "40px" }}
                 placeholder="Enter Location"
               />
+              <input
+                // onChange={handleChange}
+                style={{ height: "40px" }}
+                placeholder="Enter Checkin Time"
+              />
+              <input
+                // onChange={handleChange}
+                style={{ height: "40px" }}
+                placeholder="Enter Checkout Time"
+              />
               <button
                 class="btn btn-primary"
                 style={{ display: "inline-block", marginLeft: "20px" }}
